@@ -2,7 +2,7 @@
 /**
  * The ClockDisplay class implements a digital clock display for a
  * European-style 24 hour clock. The clock shows hours and minutes. The 
- * range of the clock is 00:00 (midnight) to 23:59 (one minute before 
+ * range of the clock is 12:00 (midnight) to 11:59 (one minute before 
  * midnight).
  * 
  * The clock display receives "ticks" (via the timeTick method) every minute
@@ -20,11 +20,11 @@ public class ClockDisplay
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
-     * creates a new clock set at 00:00.
+     * creates a new clock set at 12:00.
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
         updateDisplay();
     }
@@ -36,10 +36,17 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute)
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         setTime(hour, minute);
     }
+public String getDisplayValue() {
+    int displayHour = hours.getValue();
+    if(displayHour == 0) {
+        displayHour = 12;  
+    }
+    return displayHour + ":" + minutes.getDisplayValue();
+}
 
     /**
      * This method should get called once every minute - it makes
@@ -64,6 +71,9 @@ public class ClockDisplay
         hours.setValue(hour);
         minutes.setValue(minute);
         updateDisplay();
+       
+        
+      
     }
 
     /**
