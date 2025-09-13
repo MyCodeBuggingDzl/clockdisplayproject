@@ -1,5 +1,5 @@
 Project: clock-display-with-GUI
-Authors: Michael Kölling and David J. Barnes
+Authors: Michael Kölling and David J. Barnes 
 
 This project is part of the material for the book
 
